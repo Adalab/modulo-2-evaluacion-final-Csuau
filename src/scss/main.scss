@@ -1,15 +1,6 @@
-/*@import 'core/variables';
-
-
-@import 'layout/page';
-@import 'layout/header';
-@import 'layout/footer';
-@import 'pages/index';
-*/
+@import 'core/variables';
 @import 'core/reset';
-.root {
-  font-family: 'Edu QLD Beginner', cursive;
-}
+
 .formStyle {
   display: flex;
   flex-direction: column;
@@ -24,38 +15,39 @@
 }
 
 .title {
-  color: white;
+  color: $colorPrimari;
   font-size: 50px;
   font-weight: bold;
-  font-family: 'Edu QLD Beginner', cursive;
+  font-family: $font;
 }
 
 .input {
-  font-size: 24px;
-  font-family: 'Edu QLD Beginner', cursive;
+  font-size: 28px;
+  font-family: $font;
+  color: $colorSecundari;
   border-radius: 10px;
-  border: none;
+  border: solid 5px $colorSecundari;
   padding: 10px;
   margin-right: 20px;
 }
 .btn {
   font-size: 24px;
-  font-family: 'Edu QLD Beginner', cursive;
-  color: white;
+  font-family: $font;
+  color: $colorPrimari;
   font-weight: bold;
   padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 10px;
-  border: none;
+  border: solid 5px $colorPrimari;
   margin: 10px;
-  background-color: rgb(200, 80, 172);
+  background-color: $colorSecundari;
 }
 .seriesAnime {
   display: grid;
   grid-template-columns: 0.5fr 1.5fr;
   padding-top: 50px;
-  background-color: rgb(194, 145, 194);
+  background-color: $colorSecundari;
   min-height: 500px;
 }
 
@@ -64,8 +56,8 @@
   justify-content: center;
   align-items: center;
   font-size: 40px;
-  font-family: 'Edu QLD Beginner', cursive;
-  color: white;
+  font-family: $font;
+  color: $colorPrimari;
   font-weight: 500;
   padding-bottom: 20px;
 }
@@ -84,11 +76,11 @@
 }
 .liContainer {
   font-size: 24px;
-  font-family: 'Edu QLD Beginner', cursive;
-  color: white;
+  font-family: $font;
+  color: $colorPrimari;
   text-align: center;
   padding: 10px;
-  border: 5px solid white;
+  border: 5px solid $colorPrimari;
   border-radius: 10px;
   position: relative;
   h2 {
@@ -98,13 +90,13 @@
 }
 
 .favorite {
-  border: 5px solid purple;
-  background-color: white;
-  color: purple;
+  border: 5px solid $colorFavorite;
+  background-color: $colorPrimari;
+  color: $colorFavorite;
 }
 
 .btnRemove {
-  color: white;
+  color: $colorPrimari;
   font-size: 38px;
   font-weight: 500;
   position: absolute;

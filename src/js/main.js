@@ -49,7 +49,7 @@ function renderResults (title, image_url, id) {
     const liElement = createHtml(title, image_url, id);
 
     if (favorites.find(item => parseInt(item.id) === id)) {
-        liElement.classList.add('favorite')
+        liElement.classList.add('favorite');
     }
 
     resultList.appendChild(liElement);
@@ -97,6 +97,7 @@ function toggleResetBtnFavorites () {
 }
 
 function resetLocalStorage () {
+    favorites.forEach(item => removeFavorite(item.id));
     localStorage.removeItem('favorites');
     favorites = [];
     favoritesList.innerHTML = null;
@@ -105,7 +106,6 @@ function resetLocalStorage () {
 
 function renderFavorite (title, img, id) {
     const liElement = createHtml(title, img, id);
-
     const btnRemove = document.createElement("span");
     btnRemove.innerText = 'x';
     btnRemove.classList.add('btnRemove');
@@ -120,16 +120,25 @@ function checkIdRemove (ev) {
     const id = element.dataset.id;
     const itemFavorite = favorites.findIndex(item => item.id === id);
 
+
+
     if (itemFavorite !== -1) {
         favorites.splice(itemFavorite, 1);
         removeFavorite(id);
-        localStorage.setItem('favorites', JSON.stringify(favorites));
+        localStorage.setItem('favorites', JSON.stringify(favorites))
+
     }
+
 }
 
 function removeFavorite (id) {
     const itemRemove = favoritesList.querySelector(`[data-id="${id}"]`);
     itemRemove.remove();
+    const itemResultFav = resultList.querySelector(`[data-id="${id}"]`);
+    if (itemResultFav) {
+        itemResultFav.classList.remove('favorite');
+    }
+
 }
 
 searchBtn.addEventListener('click', getItems);
