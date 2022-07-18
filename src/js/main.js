@@ -31,6 +31,7 @@ function checkImg (image_url) {
 
 function createHtml (title, image_url, id) {
     const liElement = document.createElement('li');
+    liElement.classList.add("liContainer")
     liElement.dataset.id = id;
     const divResult = document.createElement("div");
     const imgElement = document.createElement("img");
@@ -104,6 +105,7 @@ function resetLocalStorage () {
 
 function renderFavorite (title, img, id) {
     const liElement = createHtml(title, img, id);
+
     const btnRemove = document.createElement("span");
     btnRemove.innerText = 'x';
     btnRemove.classList.add('btnRemove');

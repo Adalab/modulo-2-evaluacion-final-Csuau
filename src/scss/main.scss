@@ -7,15 +7,108 @@
 @import 'pages/index';
 */
 @import 'core/reset';
+.root {
+  font-family: 'Edu QLD Beginner', cursive;
+}
+.formStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  gap: 30px;
+  background-image: url('../images/anime.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.title {
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  font-family: 'Edu QLD Beginner', cursive;
+}
+
+.input {
+  font-size: 24px;
+  font-family: 'Edu QLD Beginner', cursive;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  margin-right: 20px;
+}
+.btn {
+  font-size: 24px;
+  font-family: 'Edu QLD Beginner', cursive;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  border: none;
+  margin: 10px;
+  background-color: rgb(200, 80, 172);
+}
+.seriesAnime {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 50px;
+  background-color: rgb(194, 145, 194);
+  min-height: 500px;
+}
+
+.subtitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-family: 'Edu QLD Beginner', cursive;
+  color: white;
+  font-weight: 500;
+  padding-bottom: 20px;
+}
+
+.ulContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  grid-gap: 1.25rem;
+  gap: 1.25rem;
+  padding: 50px;
+}
+.liContainer {
+  font-size: 24px;
+  font-family: 'Edu QLD Beginner', cursive;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border: 5px solid white;
+  border-radius: 10px;
+  position: relative;
+  h2 {
+    padding: 20px;
+    line-height: 28px;
+  }
+}
 
 .favorite {
   border: 5px solid purple;
-  border-radius: 10px;
+  background-color: white;
+  color: purple;
 }
 
 .btnRemove {
-  color: purple;
-  font-size: 32px;
+  color: white;
+  font-size: 38px;
+  font-weight: 500;
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
+
+.btnResetFav {
+  margin-left: 50px;
 }
 
 .hidden {
