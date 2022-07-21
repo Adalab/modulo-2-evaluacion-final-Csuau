@@ -16,8 +16,8 @@ function getItems (ev) {
     fetch(`https://api.jikan.moe/v4/anime?q=${userSearch.value}`)
         .then((response) => response.json())
         .then(({ data }) => {
-            data.forEach(({ title, images: { jpg: { image_url } }, mal_id }) => {
-                renderResults(title, checkImg(image_url), mal_id);
+            data.forEach(({ title, images: { jpg: { image_url } }, mal_id, type }) => {
+                renderResults(title, checkImg(image_url), mal_id, type);
             });
         });
 }
@@ -29,10 +29,14 @@ function checkImg (image_url) {
     return image_url;
 }
 
-function createHtml (title, image_url, id) {
+function createHtml (title, image_url, id, type) {
     const liElement = document.createElement('li');
     liElement.classList.add("liContainer")
     liElement.dataset.id = id;
+    const paragraph = document.createElement('p');
+    const typeElement = document.createTextNode(type);
+    paragraph.appendChild(typeElement);
+    liElement.appendChild(paragraph);
     const divResult = document.createElement("div");
     const imgElement = document.createElement("img");
     imgElement.setAttribute("src", image_url);
@@ -42,11 +46,19 @@ function createHtml (title, image_url, id) {
     liElement.appendChild(h2Element);
     liElement.appendChild(divResult);
     divResult.appendChild(imgElement);
+    if (type === 'Special') {
+        const paragraphSpecial = document.createElement('p');
+        const hSpecial = document.createTextNode('historia especial');
+        paragraphSpecial.appendChild(hSpecial);
+        liElement.appendChild(paragraphSpecial);
+
+
+    }
     return liElement;
 }
 
-function renderResults (title, image_url, id) {
-    const liElement = createHtml(title, image_url, id);
+function renderResults (title, image_url, id, type) {
+    const liElement = createHtml(title, image_url, id, type);
 
     if (favorites.find(item => parseInt(item.id) === id)) {
         liElement.classList.add('favorite');
@@ -66,6 +78,7 @@ function addFavorites (ev) {
     if (itemFavorite === -1) {
         favorites.push({ id, title, img })
         renderFavorite(title, img, id);
+        console.log(title);
     } else {
         favorites.splice(itemFavorite, 1);
         removeFavorite(id);
